@@ -1,0 +1,30 @@
+$theme_dir = 'F:xampphtdocscodigofonterandom-theme\';//Caminho absoluto para o diretÃ³rio/pasta de temas (arquivos .css). Deve terminar em "/" (Linux) ou "\" (Windows)
+$files = scandir($theme_dir);//Pega um array com os arquivos do diretÃ³rio/pasta definido em $theme_dir
+foreach(glob($theme_dir."*.css") as $theme_file){//Monta um array com o caminho (path) de todos os arquivos .css em $files
+	$valid_files[] = $theme_file;
+}
+$rand = array_rand($valid_files);//Pega uma chave do array $valid_files de forma aleatÃ³ria
+$tema = basename($valid_files[$rand]);//Pega o nome do arquivo aleatÃ³rio
+ 
+?>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xml:lang="en" lang="en">
+ 
+<head>
+	<title>untitled</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 0.16" />
+	<style type="text/css">
+		@import url('<?php echo $tema; ?>');
+	</style>
+</head>
+ 
+<body>
+	<h1>Tema personalizado</h1>
+	<h2>Exemplo de tema randÃ´mico</h2>
+	<p>Este script PHP seleciona um CSS randomicamente a cada carregamento da pÃ¡gina.</p>
+	<p>Atualmente usando o arquivo: <?php echo $tema; ?></p>
+</body>
+</html>
